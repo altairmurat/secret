@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Valentine Surprise</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(145deg, #ffe0ec, #ffc0d9);
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #d10068;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      font-size: 1.2rem;
+      padding: 15px 25px;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      margin: 10px;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+
+    .yes {
+      background-color: #ff5e9c;
+      color: white;
+    }
+
+    .yes:hover {
+      background-color: #ff3983;
+    }
+
+    .no {
+      background-color: #f0f0f0;
+      color: #333;
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .message {
+      font-size: 1.4rem;
+      color: #8b0057;
+      margin-top: 40px;
+      display: none;
+      max-width: 90%;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #ff4d88;
+      animation: floatUp 10s infinite ease-in;
+      transform: rotate(-45deg);
+      opacity: 0.7;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #ff4d88;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      top: 0;
+      left: 10px;
+    }
+
+    @keyframes floatUp {
+      0% {
+        bottom: -50px;
+        transform: translateX(0) rotate(-45deg);
+        opacity: 0.8;
+      }
+      100% {
+        bottom: 100vh;
+        transform: translateX(-50px) rotate(-45deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .btn {
+        font-size: 1rem;
+        padding: 12px 20px;
+      }
+
+      .message {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Will you be my Valentine? 💖</h1>
+  <button class="btn yes" onclick="document.body.style.backgroundColor = '#ffccff'; showMessage()">Yes</button>
+  <button class="btn no" id="noBtn">No</button>
+
+  <div class="message" id="message">
+    I knew you would say no! 🥰<br>
+    See you today at <strong>LoveHeart Hotel</strong>, <strong>6:00 PM</strong> ❤️
+  </div>
+
+<script>
+  // Floating hearts (no change here)
+  for (let i = 0; i < 30; i++) {
+    let heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDelay = Math.random() * 10 + 's';
+    heart.style.width = heart.style.height = (Math.random() * 20 + 10) + 'px';
+    document.body.appendChild(heart);
+  }
+
+  // No button runs away
+  const noBtn = document.getElementById('noBtn');
+  noBtn.addEventListener('mouseover', () => {
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 100);
+    noBtn.style.left = `${x}px`;
+    noBtn.style.top = `${y}px`;
+  });
+
+  // ✅ Yes button: change background and show message
+  function showMessage() {
+  // change entire background (overrides gradient)
+  document.body.style.background = "linear-gradient(135deg, #fff0f5, #ffb6c1)";
+ // solid pink
+  // show the message
+  document.getElementById('message').style.display = 'block';
+}
+
+</script>
+
+
+</body>
+</html>
