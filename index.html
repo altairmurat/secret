@@ -151,22 +151,33 @@
   // No button runs away
   const noBtn = document.getElementById('noBtn');
 
-// Function to move the No button
+// Movement function
 function moveNoButton() {
-  const x = Math.random() * (window.innerWidth - 100);
-  const y = Math.random() * (window.innerHeight - 100);
+  const x = Math.random() * (window.innerWidth - 120);
+  const y = Math.random() * (window.innerHeight - 70);
   noBtn.style.left = `${x}px`;
   noBtn.style.top = `${y}px`;
 }
 
-// Move on hover (desktop)
+// Desktop: move on hover
 noBtn.addEventListener('mouseover', moveNoButton);
 
-// Move on touch (mobile/iPhone)
+// Mobile: move on touch — with forced reflow
 noBtn.addEventListener('touchstart', function (e) {
-  e.preventDefault(); // Prevent tap behavior
-  moveNoButton();
+  e.preventDefault();
+
+  // Slight delay forces repaint
+  setTimeout(() => {
+    moveNoButton();
+
+    // Optional: briefly shrink button to help reset tap zone
+    noBtn.style.transform = 'scale(0.98)';
+    setTimeout(() => {
+      noBtn.style.transform = 'translate(-50%, -50%)';
+    }, 100);
+  }, 50);
 });
+
 
   // ✅ Yes button: change background and show message
   function showMessage() {
