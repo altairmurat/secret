@@ -195,7 +195,8 @@
 
     <div class="?" id="ending" style="display: none;">
         <h1>CONGRATS!! <br> YOU WON <br></h1>
-        <h1 style="color: white">사랑해요!!!!!!!!</h1>
+        <h1 style="color: white">사랑해요!!!!!!!!</h1><br><br>
+        <button class="btn pink" onclick="showMenu()">return back</button>
     </div>
 
 <script>
@@ -309,6 +310,11 @@ function trueQ6() {
 function endingPage() {
     document.getElementById('q6').style.display = 'none';
     document.getElementById('ending').style.display = 'block';
+}
+
+function showMenu() {
+    document.getElementById('ending').style.display = 'none';
+    document.getElementById('loveme').style.display = 'block';
 }
 
 </script>
