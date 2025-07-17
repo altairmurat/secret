@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Сюрприз Оскарбинке</title>
@@ -135,7 +137,7 @@
 
     <div class="message" id="message">
         Я знал, что ты скажешь "Да" 🥰<br>
-        Пройдешь мой мини тест? 👉👈
+        Пройдешь мой мини тест? 👉👈<br>
         <button class="btn white" onclick="showTest()">ПОГНАЛИИИИ</button>
     </div>
 
@@ -146,27 +148,54 @@
     </div>
 
     <div class="?" id="q2" style="display: none;">
-        <h1>ПРАВИЛЬНОООООООООООООО</h1>
-        <h1>Наша первая совместная фотка? (ЕЛЕ ЕЛЕ ТУСКЕН АХВХАХ)</h1><br>
+        ПРАВИЛЬНОООООООООООООО
+        <h1>Наша первая совместная фотка?<br> (ЕЛЕ ЕЛЕ ТУСКЕН АХВХАХ)</h1><br>
         <button class="btn pink" onclick="falseQ()">в 6 утра</button><br>
         <button class="btn pink" onclick="trueQ2()">наш первый танец</button>
     </div>
 
     <div class="?" id="q3" style="display: none;">
-        <h1>УМНИЦАААААА</h1>
-        <img src="imgg.png" style="width:30px;height:40px;">
-        <h1>капец милашки</h1>
+        УМНИЦАААААА<br>
+        <img src="dance.jpg" style="width:100px;height:170px;"><br>
+        капец милашки<br>
         <h1>Мой любимый исполнитель???🤨🤨🤨</h1><br>
         <button class="btn pink" onclick="falseQ()">твой любимый цвет</button><br>
         <button class="btn pink" onclick="trueQ3()">ноиз мс</button>
     </div>
 
     <div class="?" id="music" style="display: none;">
-        <h1>знаешь, хорошаааа</h1>
-        <h1>ты спрашивала мои любимые песни... так вот... тут плейлист всех песен, которые напоминают мне тебя, хотел, чтобы ты сама все прослушала, когда скучаешь и хочешь знать, что я на самом деле чувствую к тебе</h1>
-        <audio controls>
-            <source src="senkelersin.mp3" type="audio/mpeg">
-        </audio>
+        молодец, знаешь меня<br>
+        <h1>ты спрашивала мои любимые песни... так вот... тут плейлист из всех песен, которые напоминают мне тебя. <br>я тебя люблю</h1><br>
+        <a href="https://youtube.com/">тык</a><br>
+        <button class="btn pink" onclick="trueQ4()">продолжить тест</button>
+    </div>
+
+    <div class="?" id="q4" style="display: none;">
+        <h1>кто больше всего засыпает первее</h1><br>
+        <img src="squidgame.jpg" style="width:230px;height:160px;"><br>
+        <button class="btn pink" onclick="trueQ5f()">Альтаир</button><br>
+        <button class="btn pink" onclick="trueQ5()">Сабирина</button>
+    </div>
+
+    <div class="?" id="q5" style="display: none;">
+        <h1>угадай сколько раз ты мне снилась</h1>
+        <button class="btn pink" onclick="falseQ()">0</button><br>
+        <button class="btn pink" onclick="falseQ()">3</button>
+        <button class="btn pink" onclick="trueQ6()">5</button><br>
+        <button class="btn pink" onclick="trueQ6i()">бесконечно раз</button>
+    </div>
+
+    <div class="?" id="q6" style="display: none;">
+        <h1>в какой день мы впервые сыграли в майнкрафт</h1>
+        <img src="minecraft.jpg" style="width:230px;height:150px;"><br>
+        <button class="btn pink" onclick="endingPage()">July 5</button><br>
+        <button class="btn pink" onclick="falseQ()">July 3</button><br>
+        <button class="btn pink" onclick="falseQ()">June 30</button><br>
+    </div>
+
+    <div class="?" id="ending" style="display: none;">
+        <h1>CONGRATS!! <br> YOU WON <br></h1>
+        <h1 style="color: white">사랑해요!!!!!!!!</h1>
     </div>
 
 <script>
@@ -219,6 +248,13 @@ noBtn.addEventListener('touchstart', function (e) {
   // show the message
   document.getElementById('message').style.display = 'block';
   document.getElementById('loveme').style.display = 'none';
+
+  confetti({
+    particleCount: 1000,
+    spread: 1000,
+    origin: { y: 0.6 }
+  });
+
 }
 
     function showTest() {
@@ -244,6 +280,35 @@ function trueQ2() {
 function trueQ3() {
     document.getElementById('q3').style.display = 'none';
     document.getElementById('music').style.display = 'block';
+}
+
+function trueQ4() {
+    document.getElementById('music').style.display = 'none';
+    document.getElementById('q4').style.display = 'block';
+}
+
+function trueQ5f() {
+    alert("дада конечно 🙄🙄🙄")
+}
+
+function trueQ5() {
+    document.getElementById('q4').style.display = 'none';
+    document.getElementById('q5').style.display = 'block';
+}
+
+function trueQ6i() {
+    alert("я столько раз даже не спал 😁 поцелуй для продолжения")
+}
+
+function trueQ6() {
+    alert("правильно! как догадалась, я добавил много вопросов, чтобы ты меня много раз поцеловала 😁")
+    document.getElementById('q5').style.display = 'none';
+    document.getElementById('q6').style.display = 'block';
+}
+
+function endingPage() {
+    document.getElementById('q6').style.display = 'none';
+    document.getElementById('ending').style.display = 'block';
 }
 
 </script>
