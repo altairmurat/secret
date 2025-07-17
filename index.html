@@ -135,7 +135,7 @@
         <button class="btn white" id="noBtn">Нет.</button>
     </div>
 
-    <div class="message" id="message">
+    <div class="message" id="messagee">
         Я знал, что ты скажешь "Да" 🥰<br>
         Пройдешь мой мини тест? 👉👈<br><br>
         <button class="btn pink" onclick="showTest()">ПОГНАЛИИИИ</button>
@@ -247,7 +247,7 @@ noBtn.addEventListener('touchstart', function (e) {
   document.body.style.background = "linear-gradient(135deg, #fff0f5, #ffb6c1)";
  // solid pink
   // show the message
-  document.getElementById('message').style.display = 'block';
+  document.getElementById('messagee').style.display = 'block';
   document.getElementById('loveme').style.display = 'none';
 
   confetti({
@@ -260,7 +260,7 @@ noBtn.addEventListener('touchstart', function (e) {
 
     function showTest() {
   document.body.style.background = "linear-gradient(135deg, #fff0f5, #ffb6c9)";
-  document.getElementById('message').style.display = 'none'; // hide the previous message
+  document.getElementById('messagee').style.display = 'none'; // hide the previous message
   document.getElementById('q1').style.display = 'block';     // show the question
 }
 
